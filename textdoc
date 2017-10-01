@@ -1,0 +1,84 @@
+char *GetText(WINDOW wnd)
+
+Returns the address of the text buffer for a TEXTBOX or derived
+window class.
+
+-------------------------------------------------------------------
+char *TextLine(WINDOW wnd, int line)
+
+Returns the address of a specified line of text (0, 1, ...) in a
+TEXTBOX or derived class.
+
+-------------------------------------------------------------------
+WINDOW CreateWindow(
+    CLASS class,              /* class of this window       */
+    char *ttl,                /* title or NULL              */
+    int left, int top,        /* upper left coordinates     */
+    int height, int width,    /* dimensions                 */
+    void *extension,          /* pointer to additional data */
+    WINDOW parent,            /* parent of this window      */
+    int (*wndproc)(struct window *,MESSAGE,PARAM,PARAM),
+    int attrib)               /* window attribute           */
+
+This function creates a window. It returns the WINDOW handle that
+mesages and functions use to identify the window.
+
+-------------------------------------------------------------------
+void PostMessage(WINDOW wnd, MESSAGE msg, PARAM p1, PARAM p2)
+
+Post a message to a window. The window will receive the message in
+turn during the message-dispatching loop.
+
+-------------------------------------------------------------------
+int SendMessage(WINDOW wnd, MESSAGE msg, PARAM p1, PARAM p2)
+
+Send a message to a window. The window will receive the message
+immediately. Control returns to the sender after the window has
+processed the message. The window can return an integer value.
+
+This function can send system messages to NULLWND. System messages
+are ones that D-Flat processes without regard to a particular window.
+
+CLOSE_WINDOW           delete a window                
+  Sent:    by the app to destroy a window
+  P1:      
+  P2:      
+  Returns: 
+
+Text Box Messages  
+
+ADDTEXT                add text to the text box       
+  Sent:    to append a line of text to the text box
+  P1:      address of null-terminated string 
+           (textbox makes its own copy. string can go out of scope.)
+  P2:      
+  Returns: 
+
+CLEARTEXT              clear the text box             
+  Sent:    clear all text from the text box
+  P1:      
+  P2:      
+  Returns: 
+
+SETTEXT                set address of text buffer     
+  Sent:    To set text buffer to caller's text.
+  P1:      address of text buffer
+           (lines are terminated by \n without \0)
+           (textbox makes its own copy. string can go out of scope.)
+  P2:      length of text buffer
+  Returns: 
+
+SCROLL                 vertical scroll of text box    
+  Sent:    to scroll a text window vertically one line
+  P1:      true = scroll up, false = scroll down
+  P2:
+  Returns: 
+
+HORIZSCROLL            horizontal scroll of text box  
+  Sent:    to scroll a text window horizontally one line
+  P1:      true = scroll left
+  P2:      false = scroll right
+  Returns: 
+
+
+

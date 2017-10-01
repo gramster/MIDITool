@@ -1,0 +1,861 @@
+; ------------------------ MIDITOOL.HLP ---------------------
+; To line 1143
+; Get a more recent version of the helpfile to fill in things
+; that Steven's hasn't done yet.
+;
+; This is the help text file for the MIDITOOL application. It 
+; includes the help text that a D-Flat application would use 
+; for the user interface.
+;
+; There can be a help window with a helptag name for each
+; command in commands.h, each menu label on the menu bar 
+; as defined in menus.c, and each dialog box name in dialogs.c
+;
+; There can be other help windows as well. Some of them will
+; be displayed as the result of hypertext and definition key 
+; words embedded in the help text of other help windows. Others
+; can be implemented from within an application software system.
+;
+; Following is the format for a help window:
+;
+; ⁄ƒƒ (1st column of each line)
+; 
+; ; anything with a semicolon in the 1st column is a comment
+; <helptag>                 (names the help window)
+; [<<]<helptag>             (names the previous window in chain)
+; [>>]<helptag>             (names the next window in chain)
+; Help Window Title         (displays in window's title bar)
+; Help text follows until next helptag occurs
+; Hypertext reference  [..keyword]<helptag> embedded in text
+; Definition reference [**keyword]<helptag> embedded in text
+; <helptag>                 (names another window)
+;
+; Notes: 
+;   1. A hypertext reference, when selected, causes the 
+;      associated help window named by the <helptag> to 
+;      become the active help window.
+;   2. A definition reference, when selected, displays
+;      a momentary window with the text of the associated
+;      help window named by the <helptag>. The window 
+;      closes when the user releases the Enter key or
+;      mouse button.
+;   3. A definition window has no title.
+;   4. The last window is followed by the <end> helptag.
+;   5. The window's height and width adjust to the text.
+;   6. The [..], [**], and <helptags> do not display and
+;      do not figure in the width of the line in which 
+;      they occur.
+;
+; -----------------------------------------
+<Application>
+[<<]<MIDITOOL>
+[>>]<Menubar>
+Application Window
+The application window is MIDITOOL's `desktop'.
+
+This window contains MIDITOOL's [..Editing Windows]<docwindow>
+for editing tracks. Before you load or record
+any tracks, the application window is empty.
+
+The application window has an [..Action Bar]<Menubar>
+just below its [..Title Bar]<titlebar> and a [..Status Bar]<statusbar>
+at the bottom.
+; -----------------------------------------
+<MIDITOOL>
+[>>]<Application>
+The MIDITOOL Program
+MIDITOOL is a simple but versatile tool for exploring MIDI
+with the Roland MPU-401 MIDI Processing Unit. It allows you to
+record, edit and play back multi-track MIDI information using up
+to sixteen MIDI instruments arranged using the eight tracks of
+the MPU.
+
+Recorded MIDI information is stored in either a [..textual form]<TextFormat>
+or a [..graphical form]<GrafikFormat>. You can use the built-in
+editor to modify the information, or save it in a file to edit
+with your own favourite editor. Although MIDITOOL does not sport
+sophisticated editing facilities, the simple formats used for the
+MIDI data allow easy editing with a text editor; thus, MIDITOOL
+is very versatile.
+; -----------------------------------------
+<docwindow>
+Window
+A Window contains the MIDI data that you work
+on. It displays within the [..Application Window]<Application>
+and consists of these parts:
+
+  [..Client Area]<client>
+  [..Border]<border>
+  [..Title Bar]<titlebar>
+  [..Status Bar]<statusbar>
+  [..Scroll Bars]<scrollbar>
+  [..Control Box]<controlbox>
+  [..Minimize Box]<minbox>
+  [..Maximize Box]<maxbox>
+  [..Restore Box]<restorebox>
+  [..Resize Box]<sizebox>
+
+There are two types of window used in MIDITOOL - 
+a [..graphic window]<GrafikWindow> and a [..text window]<TextWindow>.
+The text window is always open, but the graphic
+window only opens when you select [..Graphic Editor]<ID_GRAFIK>
+from the [..Edit menu]<ID_EDIT>.
+; -----------------------------------------
+<client>
+[<<]<docwindow>
+[>>]<border>
+Client Area
+The Client Area is the space inside the window's
+borders where the MIDI data values are
+displayed and manipulated.
+; -----------------------------------------
+<border>
+[<<]<client>
+[>>]<titlebar>
+Border
+The Border is the frame around a window. When the
+window has the [**focus]<Focus>, the border is a double line.
+When a different window has the focus, the border
+is a single line.
+
+The window's [..Scroll Bars]<scrollbar>, if any, are positioned
+in the right and bottom parts of the border.
+; -----------------------------------------
+<titlebar>
+[<<]<border>
+[>>]<statusbar>
+Title Bar
+The Title Bar is at the top of the window and 
+contains the window's title. When the window
+has the [**focus]<Focus>, the title is highlighted. The
+Title Bar includes these items as well:
+
+  [..Control Box]<controlbox>
+  [..Minimize Box]<minbox>
+  [..Maximize Box]<maxbox>
+  [..Restore Box]<restorebox> 
+
+You can move the window with the mouse by holding
+the left mouse button down on the title bar and
+[**dragging]<Drag> the window to its new location, then
+releasing the button.
+; -----------------------------------------
+<statusbar>
+[<<]<titlebar>
+[>>]<scrollbar>
+Status Bar
+The Status Bar is at the bottom of the application window.
+It displays the time and brief contextual messages about
+the menus and other application-dependent features.
+; ----------------------------------------- 
+<scrollbar>
+[<<]<statusbar>
+[>>]<controlbox>
+Scroll Bars
+You use Scroll Bars to scroll a window's data with the
+mouse. A window can have one or two Scroll Bars - one
+at the right and one at the bottom parts of the
+window's Border. The Scroll Bar at the right scrolls
+the document's data up and down.  The Scroll Bar on
+the bottom scrolls the window's data right and left.
+
+To scroll a window a line at a time, click the arrow
+tokens at either end of the Scroll Bar. The Scroll Bar
+includes a slider box that indicates the relative
+position of the window's display with respect to the
+total data. You can page to an approximate position
+within the data by clicking inside the Scroll Bar.
+You can [**drag]<Drag> the slider box in either direction to
+scroll the data.
+; -----------------------------------------
+<controlbox>
+[<<]<scrollbar>
+[>>]<minbox>
+Control Box
+The Control Box is indicated by the character () at
+the left end of the window's [..Title Bar]<titlebar>. You can
+click it to select the System Menu or double click
+it to close the window. DO NOT CLOSE THE TEXT WINDOW.
+; -----------------------------------------
+<minbox>
+[<<]<controlbox>
+[>>]<maxbox>
+Minimize Box
+The Minimize Box is the  token at the right 
+end of the window's [..Title Bar]<titlebar>.
+
+When you click on the Minimize Box, the window
+is reduced to an [**icon]<Icon> at the bottom of the
+[..Application Window]<Application>
+; -----------------------------------------
+<maxbox>
+[<<]<minbox>
+[>>]<restorebox>
+Maximize Box
+The Maximize Box is the  token at the right 
+end of the window's [..Title Bar]<titlebar>.
+
+When you click on the Maximize Box, the window
+grows to occupy the entire [..Client Area]<client> of the
+[..Application Window]<Application>
+; -----------------------------------------
+<restorebox>
+[<<]<maxbox>
+[>>]<sizebox>
+Restore Box
+The Restore Box is the  token character at the right
+end of a minimized window's [..Title Bar]<titlebar> and the  token
+character at the right end of a maximized window's
+Title Bar. You click the Restore Box to restore the
+window to the position and size it had before it was
+minimized or maximized.
+; -----------------------------------------
+<sizebox>
+[<<]<restorebox>
+Resize Box
+The Resize Box is the lower right corner of the
+window's border. To change the window's size,
+[**drag]<Drag> the Resize Box. The window's upper left
+coordinates remain the same, and the lower right
+coordinates change as you drag the mouse around.
+; -----------------------------------------
+<Menubar>
+[<<]<application>
+[>>]<Pulldowns>
+The Action Bar
+To select the action bar, do one of these:
+  1. Press F10
+  2. Press and release the Alt key
+  3. Press Alt+the letter that is highlighted 
+     in a menu's title on the action bar. The 
+     selected menu will pull down.
+  4. Click the action bar. If you click a 
+     pull-down menu selection's title, that 
+     menu will pull down.
+
+To exit from the action bar and return to the
+data or application window, do one of these:
+  1. Press Esc
+  2. Press and release the Alt key
+; -----------------------------------------
+;
+;  Following are the Help system windows
+;
+; -----------------------------------------
+<HelpHelp>
+[<<]<Help>
+[>>]<ExtHelp>
+Help for Help
+Getting Into the Help System
+----------------------------
+There are three ways to get into the Help system:
+
+ 1. Execute commands on the [..Help]<Help> menu
+ 2. Press F1
+ 3. Press the Help command button on a dialog box.
+
+Contextual Help (F1)
+--------------------
+The F1 key provides contextual help--help for the
+part of the application that currently has the
+[**focus]<Focus>. You can press F1 with the action bar selected, 
+a pull-down menu displayed, a field on a dialog box
+selected, or a data window in focus.
+
+The Help Command Button
+-----------------------
+The Help command button on a dialog box displays
+information about the dialog box and its purpose.
+The help window that displays when you press F1 with
+a dialog box field selected relates to the field
+itself.
+
+References to Other Help Windows
+--------------------------------
+A Help window can include a reference to another
+help window. That reference is highlighted like
+this: 
+
+    [..Help]<Help>
+
+You can Tab to the highlighted reference and press
+the Enter key to select the referenced help window.
+You can select it with the mouse by double-clicking
+on it.
+
+Definitions
+-----------
+Some references, such as [**function key]<shortcut>, are
+definitions of terms. These definitions are
+highlighted the same as references. When you select
+the definition, a window displays in the upper left
+corner of the desktop. The window contains the
+definition of the selected term and stays in view
+until you release the Enter key or the mouse
+button.
+
+Command Buttons on the Help Windows
+-----------------------------------
+Each help window contains these [..command buttons]<cmdbuttons>:
+
+  Close  This button closes the help window and
+         exits from the help system.
+  Back   This button changes to the help window
+         that you viewed before the current one.
+  Prev   This button changes to the help window
+         that logically preceeds the current one.
+  Next   This button changes to the help window
+         that logically follows the current one.
+
+Exiting from the Help System
+----------------------------
+You exit from the Help system by closing the current
+help window in one of these three ways:
+
+  1. Press the Esc key
+  2. Use the Close command button on the Help
+     window.
+  5. Double click the window's [..Control Box]<controlbox>.
+  4. Close the help window from its [..System Menu]<sysmenu>.
+
+; -----------------------------------------
+; -----------------------------------------
+<KeysHelp>
+[<<]<ExtHelp>
+[>>]<HelpIndex>
+Keys Help
+From the Desktop
+----------------
+  Alt+Hyphen      Open the desktop's [..SystemMenu]<sysmenu>.
+  F10 or Alt      Activate the [..ActionBar]<menubar>.
+  Esc             Deactivate the Action Bar.
+  Alt+letter      Open the associated [..Pull-down menu]<Pulldowns>.
+  Alt+F6          Change [**focus]<Focus> to another window.
+  Alt+X           Exit the application.
+  Alt-F1          Makes Track 1 the [..active track]<ActiveTrack>.
+  Alt-F2          Makes Track 2 the [..active track]<ActiveTrack>.
+  Alt-F3          Makes Track 3 the [..active track]<ActiveTrack>.
+  Alt-F4          Makes Track 4 the [..active track]<ActiveTrack>.
+  Alt-F5          Makes Track 5 the [..active track]<ActiveTrack>.
+  Alt-F6          Makes Track 6 the [..active track]<ActiveTrack>.
+  Alt-F7          Makes Track 7 the [..active track]<ActiveTrack>.
+  Alt-F8          Makes Track 8 the [..active track]<ActiveTrack>.
+
+From a [..Window]<window>
+----------------------
+  Alt+Spacebar    Open the window's [..System Menu]<sysmenu>
+  Alt+S           Save the data to a disk file.
+
+Editor Keys
+-----------
+  Arrow keys      Move the cursor one character.
+  Ctrl+arrow      Move the cursor one word.
+  Del             Delete character to the right of
+                  the cursor. If a [..block]<Block> is marked,
+                  delete the block.
+  Backspace       Delete character to the left of
+                  the cursor. If a block is marked,
+                  delete the block.
+  Alt+BackSpace   Undo the last block deletion.
+  PgUp/PgDn       Scroll forward and back one page.
+  Home/End        Move the cursor to the beginning
+                  and end of the line.
+  Ctrl+Home/End   Move the cursor to the beginning
+                  and end of the data.
+  Ins             Toggle Insert/Overstrike mode.
+  Tab             Tab to the next tab stop position.
+
+[..Clipboard]<clipboard> Keys
+--------------
+  Shift+Del       [..Cut]<ID_CUT> the marked text to the
+                  Clipboard
+  Ctrl+Ins        [..Copy]<ID_COPY> the marked text to the
+                  Clipboard.
+  Shift+Ins       [..Paste]<ID_PASTE> the contents of the
+                  Clipboard into the data.
+
+[..Dialog Box]<dialog> Keys
+---------------
+  Tab             Move to the next control.
+  Shift+Tab       Move to the previous control.
+  Enter           Execute the control.
+  Esc             Close the Dialog Box with no
+                  action.
+
+[..Listbox]<listbox> Keys
+------------
+  Up/down arrows  Move the selection cursor
+  Ctrl+arrows     Select a group of entries.
+  Enter           Choose the selected entry
+                  or entries.
+;  Shift+F8        Toggle Add mode.
+;  Spacebar        In Add mode, select/deselect an  
+;                  entry.
+; -----------------------------------------
+<HelpIndex>
+[<<]<KeysHelp>
+Index of Help Titles
+Select (Tab then Enter or double-click) from these 
+titles to view the help screens related to each one.
+
+  [..Application Window]<Application>
+  [..Action Bar]<Menubar>
+  [..Pull-down Menus]<Pulldowns>
+    [..The File Menu]<File>
+    [..The Edit Menu]<Edit>
+    [..The Run Menu]<Run>
+    [..The Search Menu]<Search>
+    [..The Options Menu]<Options>
+    [..The Help Menu]<Help>
+  [..Dialog Boxes]<Dialog>
+    [..The File Open Dialog Box]<FileOpen>
+    [..The Save As Dialog Box]<SaveAs>
+    [..The Replace Text Dialog Box]<ReplaceText>
+    [..The Change Config Dialog Box]<ChgCfgBox>
+    [..The Add Instrument Dialog Box]<AddInst>
+    [..The Select Instrument Dialog Box]<SelInst>
+    [..The Select Channel Dialog Box]<SelChan>
+  [..The Help System]<Help>
+    [..Help for help...]<ID_HELPHELP>
+    [..Extended help...]<ID_EXTHELP>
+    [..Keys help...]<ID_KEYSHELP>
+    [..Help index...]<ID_HELPINDEX>
+
+; -----------------------------------------
+;
+;  Following are menu command help windows
+;
+; -----------------------------------------
+<ID_ALLNEW>
+[<<]<File>
+[>>]<ID_NEW>
+The Clear All Tracks Command
+This command clears the data associated with all tracks. You will
+then have to record new data or load new data from a file for each
+track.
+; -----------------------------------------
+<ID_NEW>
+[<<]<ALLNEW>
+[>>]<ID_OPEN>
+The New Command
+This command opens a new, untitled data window for the
+[..active track]<ActiveTrack>. An untitled window is one that has not
+been given a file name. When you use the [..Save]<ID_SAVE> or
+[..Save as]<ID_SAVEAS> command on the File menu you will be asked
+for a file name. If data is already loaded for the active
+track, it is first erased.
+; -----------------------------------------
+<ID_OPEN>
+[<<]<ID_NEW>
+[>>]<ID_SAVE>
+The Open Command
+This command opens an existing track data file and loads
+it into the [..text window]<TextWindow>. You select the file by filling
+in the [..File Open]<FileOpen> dialog box. The loaded data is
+associated with the [..active track]<ActiveTrack>.
+; -----------------------------------------
+<ID_SAVE>
+[<<]<ID_OPEN>
+[>>]<ID_SAVEAS>
+The Save Command
+This command saves the data associated with the
+[..active track]<ActiveTrack> into a disk file. The file name is
+the same as when the file was loaded. If the window
+contains untitled data, this command works just like
+the [..Save as]<ID_SAVEAS> command.
+; -----------------------------------------
+<ID_SAVEAS>
+[<<]<ID_SAVE>
+[>>]<ID_PRINT>
+The Save As Command
+This command allows you to save the data associated
+with the [..active track]<ActiveTrack> using a new file name. You
+specify the file's name by filling in the fields on
+the [..Save as]<SaveAs> dialog box. 
+
+If the graphic window is active, the data will be
+saved in graphical form. This could result in velocity
+and other information being lost.
+
+The new file name becomes the title of the data
+associated with the [..active track]<ActiveTrack>.
+; -----------------------------------------
+<ID_PRINT>
+[<<]<ID_SAVEAS>
+[>>]<ID_DOS>
+The Print Command
+This command prints the data in the
+window that has the [**focus]<Focus>.
+; -----------------------------------------
+<ID_DOS>
+[<<]<ID_PRINT>
+[>>]<ID_EXIT>
+The DOS Command
+This command "shells" out to DOS. You return to the
+application from DOS by executing the DOS exit
+command at the DOS command line. 
+; -----------------------------------------
+<ID_EXIT>
+[<<]<ID_DOS>
+The Exit Command
+This command exits to DOS from the application.
+If you have changed the data associated with the 
+[..active track]<ActiveTrack>, the program will ask if you want
+to save it and allow you to do so.
+; -----------------------------------------
+<ID_UNDO>
+[<<]<Edit>
+[>>]<ID_CUT>
+The Undo Command
+This command "undoes" the most recent [..Delete]<ID_DELETETEXT> or
+[..Clear]<ID_CLEAR> command. The text that was deleted by one
+of these commands is written into the data at 
+the current cursor location.
+; -----------------------------------------
+<ID_CUT>
+[<<]<ID_UNDO>
+[>>]<ID_COPY>
+The Cut Command
+This command is active only when the current window 
+has a [..marked block]<Block>. The command deletes the text in
+the marked block, copies it to the [..Clipboard]<Clipboard>, and
+closes up the space in the data that the text 
+previously occupied.
+; ----------------------------------------- 
+<ID_COPY>
+[<<]<ID_CUT>
+[>>]<ID_PASTE>
+The Copy Command
+This command is active only when the current window
+has a [..marked block]<Block>. The command copies the text in 
+the marked block to the [..Clipboard]<Clipboard>, and closes up
+the space in the data  that the text previously
+occupied.
+; -----------------------------------------
+<ID_PASTE>
+[<<]<ID_COPY>
+[>>]<ID_CLEAR>
+The Paste Command
+This command is active only when the [..Clipboard]<Clipboard>
+contains text. The command inserts the text from
+the Clipboard into the currently active data
+window at the current cursor location.
+; -----------------------------------------
+<ID_CLEAR>
+[<<]<ID_PASTE>
+[>>]<ID_DELETETEXT>
+The Clear Command
+This command is active only when the current window
+has a [..marked block]<Block>. The command deletes the block
+of text, leaving empty space in the data where the 
+text had been.
+
+You can undo the text deletion with the [..Undo]<ID_UNDO>
+command.
+; -----------------------------------------
+<ID_DELETETEXT>
+[<<]<ID_CLEAR>
+[>>]<ID_TIMESNAP>
+The Delete Command
+This command is active only when the current window 
+has a [..marked block]<Block>. The command deletes the block
+of text, closing the space in the data where the
+text had been.
+
+You can undo the text deletion with the [..Undo]<ID_UNDO>
+command.
+; -----------------------------------------
+<ID_TIMESNAP>
+[<<]<ID_DELETETEXT>
+[>>]<ID_GRAFIK>
+The Time Snap Command
+This command modifies the data associated with the 
+[..active track]<ActiveTrack> so that every tick count byte is
+a multiple of the [..time snap value]<TimeSnapValue>. This allows
+you to get note changes to occur on precise beat
+intervals. Two beats correspond to 240 ticks, so to
+snap data to quarter note intervals in 4/4 time you
+would use a time snap value of 120, for example.
+; -----------------------------------------
+<ID_GRAFIK>
+[<<]<ID_TIMESNAP>
+The Graphic Editor Command
+This command opens a second text editing window in 
+which the MIDI data is represented graphically. Only
+Note On/Note Off and MPU timing messages are used,
+and velocity information is also lost. This 
+[..graphical format]<GrafikFormat> is often easier to use than the 
+[..text format]<TextFormat>.
+ 
+If the MIDI data is saved to a file while this window 
+is active, the data will be saved in the graphical
+format. Changing the [..active track]<ActiveTrack> will cause the 
+[..graphic window]<GrafikWindow> to close.
+
+The graphical format can be displayed more concisely
+by using [**repetitions]<Repetitions>.
+; -----------------------------------------
+<ID_RECORD>
+[<<]<Run>
+[>>]<ID_PLAY>
+The Record Command
+This command causes the MIDI data associated with the 
+[..active track]<ActiveTrack> to be cleared, and new data to be 
+recorded from the device attached to the MPU's MIDI-IN
+socket. Recording will continue until the right mouse
+button is pressed.
+
+If [..Flush Mode]<ID_FLUSH> is set, the data will be displayed in
+the text window as it is recorded. This can lead to 
+timing errors in the recorded data, however.
+; -----------------------------------------
+<ID_PLAY>
+[<<]<ID_RECORD>
+[>>]<ID_PLAYALL>
+The Play Command
+This command plays the data associated with the active track back
+through the MIDI-OUT socket of the MPU. You will be prompted to
+select an instrument from a list of installed instruments, by
+clicking on a [..Select Instrument]<ID_INST0> Radio Button. This list includes
+the MIDI channel numbers associated with each instrument.
+
+All the MIDI commands that were received from the input channel will
+be modified to address the appropriate output channel on playback.
+You can thus play the same data using any of the attached instruments.
+If you select the [..Play As Recorded]<ID_NOREDIRECT> radio button, the MIDI data will
+be played back without the channel information being modified.
+
+If [..Flush Mode]<ID_FLUSH> is set, the data will be displayed in the text 
+window as it is played, although this can lead to timing problems.
+
+When you select an instrument for playback, that instrument becomes
+the [..active instrument]<ActiveInst> for the [..active track]<ActiveTrack>. The
+[..Play All]<ID_PLAYALL> command allows multiple tracks to be played
+back.
+; -----------------------------------------
+<ID_PLAYALL>
+[<<]<ID_PLAY>
+[>>]<ID_METRO>
+The Play All Tracks Command
+This command plays back all the track data currently loaded or
+recorded. If a track has an [..active instrument]<ActiveInst>, the data for that
+track will be modified to use that instrument; otherwise the data
+for that track will be played unmodified.
+
+If [..Flush Mode]<ID_FLUSH> is set, the data will be displayed in the text
+window as it is played, although this can lead to timing problems.
+
+The [..Play]<ID_PLAY> command allows a single track to be played.
+; -----------------------------------------
+<ID_METRO>
+[<<]<ID_PLAYALL>
+The Metronome On/Off Command
+This command toggles the MPU's built-in metronome on or 
+off.
+
+You can change the rate at which the metronome beats by
+changing the [..Metronome Rate]<ID_METRATE> in the [..Change Configuration]<ChgCfgBox>
+Dialog Box.
+; -----------------------------------------
+<ID_SEARCH>
+[<<]<Search>
+[>>]<ID_REPLACE>
+The Search Command
+This command opens the [..Search Text]<SearchText>
+Dialog Box to allow you to search
+the text for a matching string.
+; -----------------------------------------
+<ID_REPLACE>
+[<<]<ID_SEARCH>
+[>>]<ID_SEARCHNEXT>
+The Replace Command
+This command opens the [..Replace Text]<ReplaceText>
+Dialog Box to allow you to search the
+text for a matching string and replace
+it with a different text string.
+; -----------------------------------------
+<ID_SEARCHNEXT>
+[<<]<ID_REPLACE>
+The Next Command
+This command continues the most recent [..Search]<ID_SEARCH>
+command beginning at the current cursor position.
+; -----------------------------------------
+<ID_CHANGECFG>
+[<<]<Options>
+[>>]<ID_DELINST>
+The Change Configuration Commmand
+This command pops up the [..Change Configuration]<ChgCfgBox>
+Dialog Box, enabling you to modify MIDITOOL's
+[**configuration]<Config>.
+; -----------------------------------------
+<ID_DELINST>
+[<<]<ID_CHANGECFG>
+[>>]<ID_ADDINST>
+The Delete Instrument Command
+This command allows you to delete an instrument from the current
+[**configuration]<Config>. You will be prompted to select an instrument from
+a list of installed instruments, by clicking on a [..Select Instrument]<ID_INST0>
+Radio Button. If you then press ENTER or select Ok, the instrument
+will be removed from the list. You will have to save the new
+configuration using the [..Save Config]<ID_SAVECFG> command in the [..Options]<Options>
+menu if you want the changes to be permanent.
+; -----------------------------------------
+<ID_ADDINST>
+[<<]<ID_DELINST>
+[>>]<ID_INSERT>
+The Add Instrument Command
+This command allows you to add a new instrument to MIDITOOL's
+[**configuration]<Config>. The [..Instrument Name]<AddInst> Dialog Box will
+pop up, allowing you to fill in the name. If you then press
+ENTER or select Ok, the instrument will be added to the
+configuration.
+
+You will have to save the new configuration using the 
+[..Save Config]<ID_SAVECFG> command in the [..Options]<Options> menu if you
+want the changes to be permanent.
+; -----------------------------------------
+<ID_INSERT>
+[<<]<ID_ADDINST>
+[>>]<ID_NEWCFG>
+The Insert Toggle
+This [**toggle]<toggle> command turns the editor's insert mode
+on and off. When insert mode is on, the editor
+inserts the text that you write. Otherwise each
+character typed overwrites the one at the current
+cursor positp2 & (LEFTSHIFT | RIGHTSHIFT)))	{
+		if (wnd->SelectCount > 1)	{
+			ClearAllSelections(wnd);
+			SendMessage(wnd, PAINT, 0, 0);
+		}
+	}
+}
+
+static void ClearAllSelections(WINDOW wnd)
+{
+	if (isMultiLine(wnd) && wnd->SelectCount > 0)	{
+		int sel;
+		for (sel = 0; sel < wnd->wlines; sel++)
+			ClearSelection(wnd, sel);
+	}
+}
+
+static void FlipSelection(WINDOW wnd, int sel)
+{
+	if (isMultiLine(wnd))	{
+		if (ItemSelected(wnd, sel))
+			ClearSelection(wnd, sel);
+		else
+			SetSelection(wnd, sel);
+	}
+}
+
+static int ExtendSelections(WINDOW wnd, int sel, int shift)
+{	
+	if (shift & (LEFTSHIFT | RIGHTSHIFT) &&
+						wnd->AnchorPoint != -1)	{
+		int i = sel;
+		int j = wnd->AnchorPoint;
+		int rtn;
+		if (j > i)
+			swap(i,j);
+		rtn = i - j;
+		while (j <= i)
+			SetSelection(wnd, j++);
+		return rtn;
+	}
+	return 0;
+}
+
+static void SetSelection(WINDOW wnd, int sel)
+{
+	if (isMultiLine(wnd) && !ItemSelected(wnd, sel))	{
+		char *lp = TextLine(wnd, sel);
+		*lp = LISTSELECTOR;
+		wnd->SelectCount++;
+	}
+}
+
+static void ClearSelection(WINDOW wnd, int sel)
+{
+	if (isMultiLine(wnd) && ItemSelected(wnd, sel))	{
+		char *lp = TextLine(wnd, sel);
+		*lp = ' ';
+		--wnd->SelectCount;
+	}
+}
+
+int ItemSelected(WINDOW wnd, int sel)
+{
+	if (isMultiLine(wnd) && sel < wnd->wlines)	{
+		char *cp = TextLine(wnd, sel);
+		return (int)((*cp) & 255) == LISTSELECTOR;
+	}
+	return FALSE;
+}
+
+#endif
+
+static int near selection_in_window(WINDOW wnd, int sel)
+{
+	return (wnd->wlines && sel >= wnd->wtop &&
+			sel < wnd->wtop+ClientHeight(wnd));
+}
+
+static void near writeselection(WINDOW wnd, int sel, int reverse, RECT *rc)
+{
+	if (selection_in_window(wnd, sel))
+		WriteTextLine(wnd, rc, sel, reverse);
+}
+
+static void near change_selection(WINDOW wnd, int sel, int shift)
+{
+	if (sel != wnd->selection)	{
+#ifdef INCLUDE_MULTILINE
+		if (isMultiLine(wnd))		{
+			int sels;
+			if (!wnd->AddMode)
+				ClearAllSelections(wnd);
+			sels = ExtendSelections(wnd, sel, shift);
+			if (sels > 1)
+				SendMessage(wnd, PAINT, 0, 0);
+			if (sels == 0 && !wnd->AddMode)	{
+				ClearSelection(wnd, wnd->selection);
+				SetSelection(wnd, sel);
+				wnd->AnchorPoint = sel;
+			}
+		}
+#endif
+		writeselection(wnd, wnd->selection,
+#ifdef INCLUDE_MULTILINE
+				isMultiLine(wnd) ?
+				ItemSelected(wnd, wnd->selection) :
+#endif
+				FALSE,
+				NULL);
+		wnd->selection = sel;
+		writeselection(wnd, sel,
+#ifdef INCLUDE_MULTILINE
+				(isMultiLine(wnd) && wnd->AddMode) ?
+				!ItemSelected(wnd, sel) :
+#endif
+				TRUE,
+				NULL);
+		
+	}
+}
+          wjQg™  MOUSE   C             ªiQiÜ  MYDBOX  C             hv"kH,  MYAPP   C             p"w3C  RECORD  OBJ           ∫≥":4xh  MY401   OBJ           ¢±"Í$”  MYREAD  C             ¬aó_6à  MYDBOX  OBJ           §±"Î$rL  MEM     OBJ           ¶±"ı$ı  JUNK    C             _ó`6}  BUTTON  OBJ           ®±"¯$}  VAN     TRK           ÷Jú”1ò  DIALBOX OBJ           Ø±"˚$äi  MY401   C             íóa6É  LIBTMPAAAAD           Bw"      README                /±"Æ$f   ê		§	
+®	∞	∏	∏	˝	
+
+4
+I
+d
+É
+Ö
+ô
+ß
+Ï ´
+∏
+ﬁ
+¸
+! ?!_#h$}%õ&π'ÿ(¯)˛+,#-1*50?2D3H5N7T9e:|;Ö8â=ì>ò@úB¢D≥EøFÀG”C◊I·JÁLÎNÒPQR%O)T3U9W=YC[T\s]{Z_â`èbìdôe≥fªg’iﬁ§‚¶Ë≠ÆØ+±=≤I∞M¥W∂Y∑e¨iπsªºàΩêæÆø¿¡∆¬œ√◊ƒı∆˘»ˇ… !À4Ã8Œ<—B“[”c‘m÷qÿtŸå€é›ëﬁ®‡™‚≠„≈Â«Á Ë·Í„ÏÈÌÓÔ"Ú&Ù)ı2ˆP¯R˙]¸z˝Ç˛üˇß ƒœ‡„ˇ	2
+PP∞π◊Ÿ,JLNTZ t!|#ã$ë&ï(õ)µ*Ω+Í,˜.02"4?5G6d7l8â9î:•<Ω=≈>÷?ﬁAÛCıD˝EGH6J8M:O@QFReSãTÆV≤XµY”[’_›a‰ceg(h3iDkgtqvyxÅ}äíÅùÇ£É®Ñ∞Ö∆ÜÃâœåËçÌéıèêëí,ì3ïEònúyùïõùü£†©¢±§±¶„ß„®©!™)´O¨c≠Ç∞É°í≤õµ£∏ªπø∫Èºø¿i¬

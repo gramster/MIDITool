@@ -1,0 +1,11 @@
+This is a MIDI Sequencer I wrote in 1991 for the Roland MPU-IPC (MPU-401)
+MIDI card. I was sharing a house with a friend who had a small recording
+studio and he got one to play with and I had a lot of fun coding this up.
+It uses a text mode windowing library called D-Flat that came from a
+series of articles by Al Stevens in Dr Dobbs.
+
+http://www.drdobbs.com/cpp/building-a-d-flat-application/184408645
+
+
+
+
